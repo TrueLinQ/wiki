@@ -8,7 +8,7 @@ nav_order: 2
 FAQ
 ==============
 
-### How do I register on the truqLinQ App
+### How do I register on the trueLinQ App
 Registration is a simple process. Enter your phone number. We will send an OTP to that number. Once you enter the correct OTP, your registration process is completed.
 
  
@@ -20,7 +20,7 @@ Message data privacy and security on your phone is managed by the operating syst
 
 ### How to securely store my message data on the cloud
 Message data is stored on iCloud for iPhones and on Google Drive for Android phones. To encrypt and store the data on the iCloud go to 
-> truqLinQ Settings > Backup > Secure Backup with Encryption and turn this ON.
+> trueLinQ Settings > Backup > Secure Backup with Encryption and turn this ON.
 
  
 
@@ -32,19 +32,19 @@ Please store this in a secure place, other than on your iPhone. If you lose this
 
  
 
-### If I uninstall my truqLinQ App, will my data be lost
+### If I uninstall my trueLinQ App, will my data be lost
 
  
 
-When you uninstall your truqLinQ App, the local data on your phone will be deleted. The data which is backed up on the iCloud can be restored once your register the truqLinQ App again
+When you uninstall your trueLinQ App, the local data on your phone will be deleted. The data which is backed up on the iCloud can be restored once your register the trueLinQ App again
 
  
 
-### If I change my phone number, will I lose my messages on the truqLinQ App
+### If I change my phone number, will I lose my messages on the trueLinQ App
 
  
 
-If you change your phone number, you will not lose your messages. They will stay associated with the truqLinQ App.
+If you change your phone number, you will not lose your messages. They will stay associated with the trueLinQ App.
 
  
 
@@ -52,4 +52,4 @@ If you change your phone number, you will not lose your messages. They will stay
 
  
 
-If you upgrade your iPhone, iPhone / IOS allow you to migrate all your apps to the new device. When you undertake the migration, your truqLinQ message data will also be migrated.
+If you upgrade your iPhone, iPhone / IOS allow you to migrate all your apps to the new device. When you undertake the migration, your trueLinQ message data will also be migrated.
