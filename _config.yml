@@ -3,7 +3,7 @@
 remote_theme: pmarsceill/just-the-docs
 title: trueLinQ
 description: Jusr.Verified
-logo: "https://cdn.truelinq.com/_common/static/truelinq/linq-main-page-150.png"
+logo: "https://cdn.truelinq.com/_common/static/truelinq/linq-logo-150x50.png"
 aux_links:
   "Login":
     - "//app.truelinq.com/linq/"
