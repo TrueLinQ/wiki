@@ -3,10 +3,10 @@
 remote_theme: pmarsceill/just-the-docs
 title: trueLinQ
 description: Jusr.Verified
-logo: "https://cdn.jsdelivr.net/gh/notiphyapp/docs@latest/content/static/app/notiphy/bg-x-logo.png"
+logo: "//cdn.truelinq.com/_common/static/truelinq/linq-main-page-150.png"
 aux_links:
   "Create Account":
-    - "//app.otpalerts.com/contak/panel/"
+    - "//app.truelinq.com/linq/"
 
 # External navigation links
 #nav_external_links:

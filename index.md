@@ -7,4 +7,4 @@ has_toc : false
 ---
 # Introduction
 
-This is our Official API Documentation for sending Messages using Business Communication Service.
+This is our Official API Documentation for sending Verification Links.

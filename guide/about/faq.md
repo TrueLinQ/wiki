@@ -8,7 +8,7 @@ nav_order: 2
 FAQ
 ==============
 
-### How do I register on the OA App
+### How do I register on the truqLinQ App
 Registration is a simple process. Enter your phone number. We will send an OTP to that number. Once you enter the correct OTP, your registration process is completed.
 
  
@@ -20,11 +20,11 @@ Message data privacy and security on your phone is managed by the operating syst
 
 ### How to securely store my message data on the cloud
 Message data is stored on iCloud for iPhones and on Google Drive for Android phones. To encrypt and store the data on the iCloud go to 
-> OA Settings > Backup > Secure Backup with Encryption and turn this ON.
+> truqLinQ Settings > Backup > Secure Backup with Encryption and turn this ON.
 
  
 
-You have the option of using your own 64-digit key or allow OA to generate a 64-digit random number key for you. We do not store this key.
+You have the option of using your own 64-digit key or allow TRUQLINQ to generate a 64-digit random number key for you. We do not store this key.
 
  
 
@@ -32,19 +32,19 @@ Please store this in a secure place, other than on your iPhone. If you lose this
 
  
 
-### If I uninstall my OA App, will my data be lost
+### If I uninstall my truqLinQ App, will my data be lost
 
  
 
-When you uninstall your OA App, the local data on your phone will be deleted. The data which is backed up on the iCloud can be restored once your register the OA App again
+When you uninstall your truqLinQ App, the local data on your phone will be deleted. The data which is backed up on the iCloud can be restored once your register the truqLinQ App again
 
  
 
-### If I change my phone number, will I lose my messages on the OA App
+### If I change my phone number, will I lose my messages on the truqLinQ App
 
  
 
-If you change your phone number, you will not lose your messages. They will stay associated with the OA App.
+If you change your phone number, you will not lose your messages. They will stay associated with the truqLinQ App.
 
  
 
@@ -52,4 +52,4 @@ If you change your phone number, you will not lose your messages. They will stay
 
  
 
-If you upgrade your iPhone, iPhone / IOS allow you to migrate all your apps to the new device. When you undertake the migration, your OA message data will also be migrated.
+If you upgrade your iPhone, iPhone / IOS allow you to migrate all your apps to the new device. When you undertake the migration, your truqLinQ message data will also be migrated.
