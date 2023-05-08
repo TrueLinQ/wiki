@@ -1,0 +1,4 @@
+node_modules/
+npm-debug.log
+source/slate/js/lib/*.min.js
+source/slate/css/*.css

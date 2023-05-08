@@ -1,0 +1,764 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Api Documentation v1.0</title>
+
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" media="screen" rel="stylesheet">
+    <link href="slate/css/print.css" media="print" rel="stylesheet">
+    <link href="slate/css/screen.css" media="screen" rel="stylesheet">
+    <script src="slate/js/lib/jquery.min.js"></script>
+    <script src="slate/js/lib/jquery.highlight.js"></script>
+    <script src="slate/js/lib/energize.js"></script>
+    <script src="slate/js/lib/imagesloaded.min.js"></script>
+    <script src="slate/js/lib/lunr.min.js"></script>
+    <script src="slate/js/app/lang.js"></script>
+    <script src="slate/js/app/toc.js"></script>
+    
+    <script src="slate/js/app/search.js"></script>
+    
+    
+    <script type="text/javascript">
+      function adjustLanguageSelectorWidth() {
+        const elem = $('.dark-box > .lang-selector');
+        elem.width(elem.parent().width());
+      }
+      $(function() {
+        loadToc($('#toc'), '.toc-link', '.toc-list-h2, .toc-list-h3, .toc-list-h4, .toc-list-h5, .toc-list-h6', 10);
+        setupLanguages($('body').data('languages'));
+        $('.content').imagesLoaded( function() {
+          recacheHeights();
+          refreshToc();
+        });
+        $(window).resize(function() {
+          adjustLanguageSelectorWidth();
+        });
+        adjustLanguageSelectorWidth();
+      });
+      window.onpopstate = function() {
+        activateLanguage(getLanguageFromQueryString());
+      };
+    </script>
+    <!-- slate; content for the head element from source/includes/head.ejs -->
+<meta name="theme-color" content="#F3F7F9">
+
+    <script src="https://unpkg.com/rapipdf/dist/rapipdf-min.js"></script>
+  </head>
+
+  <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;ruby&quot;,&quot;php&quot;,&quot;java&quot;,&quot;go&quot;,&quot;csharp&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="slate/img/navbar.png" alt="Navigation">
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="slate/img/logo.png" alt="Logo" class="logo">
+      
+        <div class="lang-selector">
+          
+            
+              <a href="#" data-language-name="shell">Shell</a>
+            
+          
+            
+              <a href="#" data-language-name="http">HTTP</a>
+            
+          
+            
+              <a href="#" data-language-name="javascript">JS</a>
+            
+          
+            
+              <a href="#" data-language-name="python">Python</a>
+            
+          
+            
+              <a href="#" data-language-name="ruby">Ruby</a>
+            
+          
+            
+              <a href="#" data-language-name="php">PHP</a>
+            
+          
+            
+              <a href="#" data-language-name="java">Java</a>
+            
+          
+            
+              <a href="#" data-language-name="go">Go</a>
+            
+          
+            
+              <a href="#" data-language-name="csharp">C#</a>
+            
+          
+        </div>
+      
+      
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      
+
+      
+
+      <div id="toc" class="toc-list-h1">
+	  	<ul class="toc-list-h1">
+        
+          <li>
+            <a href="#api-documentation" class="toc-h1 toc-link" data-title="Api Documentation v1.0">Api Documentation v1.0</a>
+            
+          </li>
+        
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            
+          </li>
+        
+          <li>
+            <a href="#api-documentation-client-doc-controller" class="toc-h1 toc-link" data-title="client-doc-controller">client-doc-controller</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#send-message" class="toc-h2 toc-link" data-title="">Send Message</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#tocS_ApiFieldError" class="toc-h2 toc-link" data-title="">ApiFieldError</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocS_ContakModel" class="toc-h2 toc-link" data-title="">ContakModel</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocS_CustomerNote" class="toc-h2 toc-link" data-title="">CustomerNote</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocS_CustomerNoteTemplate" class="toc-h2 toc-link" data-title="">CustomerNoteTemplate</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocS_ApiResponse_CustomerNote_object_" class="toc-h2 toc-link" data-title="">ApiResponse_CustomerNote_object_</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+		</ul>
+      </div>
+      
+        <ul class="toc-footer">
+          
+          <li>
+            <rapi-pdf
+                style = "width:700px; height:40px; font-size:18px;" 
+                spec-url = "https://demo.mehery.io/xms/v2/api-docs?group=latest"
+                button-label="Download PDF"
+                hide-input=true
+                pdf-title="Mehery Documentation"
+                pdf-footer-text="Copyright © MeherY SocCom. All Rights Reserved."
+                include-api-list=false
+                include-example=true
+                button-bg = "#2a2a7e00" 
+              ></rapi-pdf>
+          </li>
+        </ul>
+      
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <!-- Generator: Widdershins v4.0.1 -->
+<h1 id="api-documentation">Api Documentation v1.0</h1>
+<blockquote>
+<p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
+<p>Api Documentation</p>
+<p>Base URLs:</p>
+<ul>
+<li><a href="//app.otpalerts.com/contak">//app.otpalerts.com/contak</a></li>
+</ul>
+<p><a href="urn:tos">Terms of service</a></p>
+<p>License: <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a></p>
+<h1 id="authentication">Authentication</h1>
+<ul>
+<li>API Key (X_API_KEY)
+<ul>
+<li>Parameter Name: <strong>x-api-key</strong>, in: header.</li>
+</ul>
+</li>
+</ul>
+<h1 id="api-documentation-client-doc-controller">client-doc-controller</h1>
+<p>Client Doc Controller</p>
+<h2 id="send-message">Send Message</h2>
+<p><a id="opIdsendCustomerNoteUsingPOST"></a></p>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># You can also use wget</span><br><span class="token function">curl</span> -X POST /app.otpalerts.com/contak/entoc/send <span class="token punctuation">\</span><br>  -H <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span><br>  -H <span class="token string">'Accept: */*'</span> <span class="token punctuation">\</span><br>  -H <span class="token string">'x-api-key: string'</span> <span class="token punctuation">\</span><br>  -H <span class="token string">'x-api-key: API_KEY'</span><br></code></pre>
+<pre class="language-http"><code class="language-http"><span class="token request-line"><span class="token property">POST</span> /app.otpalerts.com/contak/entoc/send HTTP/1.1</span><br><br><span class="token header-name keyword">Content-Type:</span> application/json<br><span class="token header-name keyword">Accept:</span> */*<br><span class="token header-name keyword">x-api-key:</span> string<br></code></pre>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> inputBody <span class="token operator">=</span> '<span class="token punctuation">{</span><br>  <span class="token string">"phone"</span><span class="token operator">:</span> <span class="token string">"91XXXXXXXXXX"</span><span class="token punctuation">,</span><br>  <span class="token string">"template"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token string">"code"</span><span class="token operator">:</span> <span class="token string">"TRANSATION_ALERT"</span><span class="token punctuation">,</span><br>    <span class="token string">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token string">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token string">"prefix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token string">"subtitle"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token string">"suffix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token string">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token string">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token string">"validity"</span><span class="token operator">:</span> <span class="token number">60</span><br><span class="token punctuation">}</span>'<span class="token punctuation">;</span><br><span class="token keyword">const</span> headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Content-Type'</span><span class="token operator">:</span><span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Accept'</span><span class="token operator">:</span><span class="token string">'*/*'</span><span class="token punctuation">,</span><br>  <span class="token string">'x-api-key'</span><span class="token operator">:</span><span class="token string">'string'</span><span class="token punctuation">,</span><br>  <span class="token string">'x-api-key'</span><span class="token operator">:</span><span class="token string">'API_KEY'</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/app.otpalerts.com/contak/entoc/send'</span><span class="token punctuation">,</span><br><span class="token punctuation">{</span><br>  method<span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span><br>  body<span class="token operator">:</span> inputBody<span class="token punctuation">,</span><br>  headers<span class="token operator">:</span> headers<br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">body</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> requests<br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'*/*'</span><span class="token punctuation">,</span><br>  <span class="token string">'x-api-key'</span><span class="token punctuation">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span><br>  <span class="token string">'x-api-key'</span><span class="token punctuation">:</span> <span class="token string">'API_KEY'</span><br><span class="token punctuation">}</span><br><br>r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">'/app.otpalerts.com/contak/entoc/send'</span><span class="token punctuation">,</span> headers <span class="token operator">=</span> headers<span class="token punctuation">)</span><br><br><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><br></code></pre>
+<pre class="language-ruby"><code class="language-ruby"><span class="token keyword">require</span> <span class="token string">'rest-client'</span><br><span class="token keyword">require</span> <span class="token string">'json'</span><br><br>headers <span class="token operator">=</span> <span class="token punctuation">{</span><br>  <span class="token string">'Content-Type'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'application/json'</span><span class="token punctuation">,</span><br>  <span class="token string">'Accept'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'*/*'</span><span class="token punctuation">,</span><br>  <span class="token string">'x-api-key'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'string'</span><span class="token punctuation">,</span><br>  <span class="token string">'x-api-key'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'API_KEY'</span><br><span class="token punctuation">}</span><br><br>result <span class="token operator">=</span> <span class="token constant">RestClient</span><span class="token punctuation">.</span>post <span class="token string">'/app.otpalerts.com/contak/entoc/send'</span><span class="token punctuation">,</span><br>  params<span class="token punctuation">:</span> <span class="token punctuation">{</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span> headers<span class="token punctuation">:</span> headers<br><br>p <span class="token constant">JSON</span><span class="token punctuation">.</span>parse<span class="token punctuation">(</span>result<span class="token punctuation">)</span><br></code></pre>
+<pre class="language-php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span><br><br><span class="token keyword">require</span> <span class="token string single-quoted-string">'vendor/autoload.php'</span><span class="token punctuation">;</span><br><br><span class="token variable">$headers</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><br>    <span class="token string single-quoted-string">'Content-Type'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'application/json'</span><span class="token punctuation">,</span><br>    <span class="token string single-quoted-string">'Accept'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'*/*'</span><span class="token punctuation">,</span><br>    <span class="token string single-quoted-string">'x-api-key'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'string'</span><span class="token punctuation">,</span><br>    <span class="token string single-quoted-string">'x-api-key'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'API_KEY'</span><span class="token punctuation">,</span><br><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token variable">$client</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>GuzzleHttp<span class="token punctuation">\</span>Client</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token comment">// Define array of request body.</span><br><span class="token variable">$request_body</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">try</span> <span class="token punctuation">{</span><br>    <span class="token variable">$response</span> <span class="token operator">=</span> <span class="token variable">$client</span><span class="token operator">-></span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'POST'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'/app.otpalerts.com/contak/entoc/send'</span><span class="token punctuation">,</span> <span class="token keyword">array</span><span class="token punctuation">(</span><br>        <span class="token string single-quoted-string">'headers'</span> <span class="token operator">=></span> <span class="token variable">$headers</span><span class="token punctuation">,</span><br>        <span class="token string single-quoted-string">'json'</span> <span class="token operator">=></span> <span class="token variable">$request_body</span><span class="token punctuation">,</span><br>       <span class="token punctuation">)</span><br>    <span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$response</span><span class="token operator">-></span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">getContents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br> <span class="token punctuation">}</span><br> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>GuzzleHttp<span class="token punctuation">\</span>Exception<span class="token punctuation">\</span>BadResponseException</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token comment">// handle exception or api errors.</span><br>    <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$e</span><span class="token operator">-></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br> <span class="token punctuation">}</span><br><br> <span class="token comment">// ...</span><br></code></pre>
+<pre class="language-java"><code class="language-java"><span class="token class-name">URL</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">URL</span><span class="token punctuation">(</span><span class="token string">"/app.otpalerts.com/contak/entoc/send"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token class-name">HttpURLConnection</span> con <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpURLConnection</span><span class="token punctuation">)</span> obj<span class="token punctuation">.</span><span class="token function">openConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>con<span class="token punctuation">.</span><span class="token function">setRequestMethod</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">int</span> responseCode <span class="token operator">=</span> con<span class="token punctuation">.</span><span class="token function">getResponseCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token class-name">BufferedReader</span> in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><br>    <span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>con<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token class-name">String</span> inputLine<span class="token punctuation">;</span><br><span class="token class-name">StringBuffer</span> response <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>inputLine <span class="token operator">=</span> in<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    response<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>inputLine<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><br>in<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></code></pre>
+<pre class="language-go"><code class="language-go"><span class="token keyword">package</span> main<br><br><span class="token keyword">import</span> <span class="token punctuation">(</span><br>       <span class="token string">"bytes"</span><br>       <span class="token string">"net/http"</span><br><span class="token punctuation">)</span><br><br><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br><br>    headers <span class="token operator">:=</span> <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><br>        <span class="token string">"Content-Type"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"application/json"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token string">"Accept"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"*/*"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token string">"x-api-key"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"string"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token string">"x-api-key"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"API_KEY"</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token punctuation">}</span><br><br>    data <span class="token operator">:=</span> bytes<span class="token punctuation">.</span><span class="token function">NewBuffer</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">{</span>jsonReq<span class="token punctuation">}</span><span class="token punctuation">)</span><br>    req<span class="token punctuation">,</span> err <span class="token operator">:=</span> http<span class="token punctuation">.</span><span class="token function">NewRequest</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token string">"/app.otpalerts.com/contak/entoc/send"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><br>    req<span class="token punctuation">.</span>Header <span class="token operator">=</span> headers<br><br>    client <span class="token operator">:=</span> <span class="token operator">&amp;</span>http<span class="token punctuation">.</span>Client<span class="token punctuation">{</span><span class="token punctuation">}</span><br>    resp<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">Do</span><span class="token punctuation">(</span>req<span class="token punctuation">)</span><br>    <span class="token comment">// ...</span><br><span class="token punctuation">}</span><br></code></pre>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Net<span class="token punctuation">.</span>Http</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Net<span class="token punctuation">.</span>Http<span class="token punctuation">.</span>Headers</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Text</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Threading<span class="token punctuation">.</span>Tasks</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">Newtonsoft<span class="token punctuation">.</span>Json</span><span class="token punctuation">;</span><br><br><span class="token comment">/// &lt;&lt;summary>></span><br><span class="token comment">/// Example of Http Client</span><br><span class="token comment">/// &lt;&lt;/summary>></span><br><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HttpExample</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">private</span> <span class="token return-type class-name">HttpClient</span> Client <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><br><br>    <span class="token comment">/// &lt;&lt;summary>></span><br>    <span class="token comment">/// Setup http client</span><br>    <span class="token comment">/// &lt;&lt;/summary>></span><br>    <span class="token keyword">public</span> <span class="token function">HttpExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>      Client <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">HttpClient</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br>    <br>    <br>    <span class="token comment">/// Make a dummy request</span><br>    <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task</span> <span class="token function">MakePostRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>      <span class="token class-name"><span class="token keyword">string</span></span> url <span class="token operator">=</span> <span class="token string">"/app.otpalerts.com/contak/entoc/send"</span><span class="token punctuation">;</span><br>      <br>      <span class="token class-name"><span class="token keyword">string</span></span> json <span class="token operator">=</span> <span class="token string">@"{<br>  ""phone"": ""91XXXXXXXXXX"",<br>  ""template"": {<br>    ""code"": ""TRANSATION_ALERT"",<br>    ""model"": {<br>      ""data"": {},<br>      ""prefix"": ""string"",<br>      ""subtitle"": ""string"",<br>      ""suffix"": ""string"",<br>      ""title"": ""string"",<br>      ""value"": ""string""<br>    }<br>  },<br>  ""validity"": 60<br>}"</span><span class="token punctuation">;</span><br>      <span class="token class-name">CustomerNote</span> content <span class="token operator">=</span> JsonConvert<span class="token punctuation">.</span><span class="token function">DeserializeObject</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token keyword">await</span> <span class="token function">PostAsync</span><span class="token punctuation">(</span>content<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <br>      <br>    <span class="token punctuation">}</span><br><br>    <span class="token comment">/// Performs a POST Request</span><br>    <span class="token keyword">public</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task</span> <span class="token function">PostAsync</span><span class="token punctuation">(</span><span class="token class-name">CustomerNote</span> content<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">string</span></span> url<span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token comment">//Serialize Object</span><br>        <span class="token class-name">StringContent</span> jsonContent <span class="token operator">=</span> <span class="token function">SerializeObject</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>        <span class="token comment">//Execute POST request</span><br>        <span class="token class-name">HttpResponseMessage</span> response <span class="token operator">=</span> <span class="token keyword">await</span> Client<span class="token punctuation">.</span><span class="token function">PostAsync</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> jsonContent<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br>    <br>    <br>    <br>    <span class="token comment">/// Serialize an object to Json</span><br>    <span class="token keyword">private</span> <span class="token return-type class-name">StringContent</span> <span class="token function">SerializeObject</span><span class="token punctuation">(</span><span class="token class-name">CustomerNote</span> content<span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token comment">//Serialize Object</span><br>        <span class="token class-name"><span class="token keyword">string</span></span> jsonObject <span class="token operator">=</span> JsonConvert<span class="token punctuation">.</span><span class="token function">SerializeObject</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>        <span class="token comment">//Create Json UTF8 String Content</span><br>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">StringContent</span><span class="token punctuation">(</span>jsonObject<span class="token punctuation">,</span> Encoding<span class="token punctuation">.</span>UTF8<span class="token punctuation">,</span> <span class="token string">"application/json"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br>    <br>    <span class="token comment">/// Deserialize object from request response</span><br>    <span class="token keyword">private</span> <span class="token keyword">async</span> <span class="token return-type class-name">Task</span> <span class="token function">DeserializeObject</span><span class="token punctuation">(</span><span class="token class-name">HttpResponseMessage</span> response<span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token comment">//Read body </span><br>        <span class="token class-name"><span class="token keyword">string</span></span> responseBody <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span>Content<span class="token punctuation">.</span><span class="token function">ReadAsStringAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>        <span class="token comment">//Deserialize Body to object</span><br>        <span class="token class-name"><span class="token keyword">var</span></span> result <span class="token operator">=</span> JsonConvert<span class="token punctuation">.</span><span class="token function">DeserializeObject</span><span class="token punctuation">(</span>responseBody<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br></code></pre>
+<p><code>POST /entoc/send</code></p>
+<p>Use this API to send E2E encrypted and structured messages to your customers.</p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"phone"</span><span class="token operator">:</span> <span class="token string">"91XXXXXXXXXX"</span><span class="token punctuation">,</span><br>  <span class="token property">"template"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"TRANSATION_ALERT"</span><span class="token punctuation">,</span><br>    <span class="token property">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"prefix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"subtitle"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"validity"</span><span class="token operator">:</span> <span class="token number">60</span><br><span class="token punctuation">}</span></code></pre>
+<h3 id="send-message-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-api-key</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemacustomernote">CustomerNote</a></td>
+<td>true</td>
+<td>msg</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<h3 id="send-message-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td><a href="#schemaapiresponse_customernote_object_">ApiResponse_CustomerNote_object_</a></td>
+</tr>
+<tr>
+<td>201</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.2">Created</a></td>
+<td>Created</td>
+<td>None</td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td>None</td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>Forbidden</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Not Found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+X_API_KEY
+</aside>
+<h1 id="schemas">Schemas</h1>
+<h2 id="tocS_ApiFieldError">ApiFieldError</h2>
+<!-- backwards compatibility -->
+<a id="schemaapifielderror"></a>
+<a id="schema_ApiFieldError"></a>
+<a id="tocSapifielderror"></a>
+<a id="tocsapifielderror"></a>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"body"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"codeKey"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"codes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token string">"string"</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"descriptionKey"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"field"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"obzect"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"possibleValues"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span><br></code></pre>
+<p>ApiFieldError</p>
+<h3 id="properties">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>codeKey</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>codes</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>descriptionKey</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>field</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>obzect</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>possibleValues</td>
+<td>[object]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocS_ContakModel">ContakModel</h2>
+<!-- backwards compatibility -->
+<a id="schemacontakmodel"></a>
+<a id="schema_ContakModel"></a>
+<a id="tocScontakmodel"></a>
+<a id="tocscontakmodel"></a>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"prefix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"subtitle"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><br><span class="token punctuation">}</span><br></code></pre>
+<p>ContakModel</p>
+<h3 id="properties-1">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>suffix</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocS_CustomerNote">CustomerNote</h2>
+<!-- backwards compatibility -->
+<a id="schemacustomernote"></a>
+<a id="schema_CustomerNote"></a>
+<a id="tocScustomernote"></a>
+<a id="tocscustomernote"></a>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"phone"</span><span class="token operator">:</span> <span class="token string">"91XXXXXXXXXX"</span><span class="token punctuation">,</span><br>  <span class="token property">"template"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"TRANSATION_ALERT"</span><span class="token punctuation">,</span><br>    <span class="token property">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"prefix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"subtitle"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"validity"</span><span class="token operator">:</span> <span class="token number">60</span><br><span class="token punctuation">}</span><br></code></pre>
+<p>CustomerNote</p>
+<h3 id="properties-2">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Phone number of customer with ISD Code</td>
+</tr>
+<tr>
+<td>template</td>
+<td><a href="#schemacustomernotetemplate">CustomerNoteTemplate</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>validity</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>none</td>
+<td>Message validtity in Seconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocS_CustomerNoteTemplate">CustomerNoteTemplate</h2>
+<!-- backwards compatibility -->
+<a id="schemacustomernotetemplate"></a>
+<a id="schema_CustomerNoteTemplate"></a>
+<a id="tocScustomernotetemplate"></a>
+<a id="tocscustomernotetemplate"></a>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"TRANSATION_ALERT"</span><span class="token punctuation">,</span><br>  <span class="token property">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token property">"prefix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>    <span class="token property">"subtitle"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>    <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>    <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>    <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><br>  <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br></code></pre>
+<p>CustomerNoteTemplate</p>
+<h3 id="properties-3">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Code of template</td>
+</tr>
+<tr>
+<td>model</td>
+<td><a href="#schemacontakmodel">ContakModel</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocS_ApiResponse_CustomerNote_object_">ApiResponse_CustomerNote_object_</h2>
+<!-- backwards compatibility -->
+<a id="schemaapiresponse_customernote_object_"></a>
+<a id="schema_ApiResponse_CustomerNote_object_"></a>
+<a id="tocSapiresponse_customernote_object_"></a>
+<a id="tocsapiresponse_customernote_object_"></a>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>    <span class="token property">"phone"</span><span class="token operator">:</span> <span class="token string">"91XXXXXXXXXX"</span><span class="token punctuation">,</span><br>    <span class="token property">"template"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>      <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"TRANSATION_ALERT"</span><span class="token punctuation">,</span><br>      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>        <span class="token property">"prefix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>        <span class="token property">"subtitle"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>        <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>        <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>        <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><br>      <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><span class="token punctuation">,</span><br>    <span class="token property">"validity"</span><span class="token operator">:</span> <span class="token number">60</span><br>  <span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"details"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"error"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"errors"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"body"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"codeKey"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"codes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"string"</span><br>      <span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"descriptionKey"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"field"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"obzect"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"possibleValues"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token punctuation">{</span><span class="token punctuation">}</span><br>      <span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"exception"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"extra"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"logs"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token string">"string"</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"This is success message in plain english"</span><span class="token punctuation">,</span><br>  <span class="token property">"messageKey"</span><span class="token operator">:</span> <span class="token string">"MESSAGE_SUCCESS:MOBILE:12"</span><span class="token punctuation">,</span><br>  <span class="token property">"meta"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"params"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"/postman/email/send"</span><span class="token punctuation">,</span><br>  <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>  <span class="token property">"redirectUrl"</span><span class="token operator">:</span> <span class="token string">"/go/to/some/other/url.html"</span><span class="token punctuation">,</span><br>  <span class="token property">"results"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"phone"</span><span class="token operator">:</span> <span class="token string">"91XXXXXXXXXX"</span><span class="token punctuation">,</span><br>      <span class="token property">"template"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"TRANSATION_ALERT"</span><span class="token punctuation">,</span><br>        <span class="token property">"model"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>          <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>          <span class="token property">"prefix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>          <span class="token property">"subtitle"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>          <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>          <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>          <span class="token property">"value"</span><span class="token operator">:</span> <span class="token string">"string"</span><br>        <span class="token punctuation">}</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"validity"</span><span class="token operator">:</span> <span class="token number">60</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><span class="token punctuation">,</span><br>  <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span><br>  <span class="token property">"statusKey"</span><span class="token operator">:</span> <span class="token string">"SUCCESS"</span><span class="token punctuation">,</span><br>  <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1541276788518</span><span class="token punctuation">,</span><br>  <span class="token property">"traceid"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"warningKey"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>  <span class="token property">"warnings"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"body"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"codeKey"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"codes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"string"</span><br>      <span class="token punctuation">]</span><span class="token punctuation">,</span><br>      <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"descriptionKey"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"field"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"obzect"</span><span class="token operator">:</span> <span class="token string">"string"</span><span class="token punctuation">,</span><br>      <span class="token property">"possibleValues"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token punctuation">{</span><span class="token punctuation">}</span><br>      <span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span><br></code></pre>
+<p>ApiResponse«CustomerNote,object»</p>
+<h3 id="properties-4">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="#schemacustomernote">CustomerNote</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>details</td>
+<td>[object]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>errors</td>
+<td>[<a href="#schemaapifielderror">ApiFieldError</a>]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>exception</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>extra</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>logs</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>messageKey</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>params</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>query</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>redirectUrl</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>results</td>
+<td>[<a href="#schemacustomernote">CustomerNote</a>]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>statusKey</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>traceid</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>warningKey</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>warnings</td>
+<td>[<a href="#schemaapifielderror">ApiFieldError</a>]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="dark-box">
+        
+          <div class="lang-selector">
+            
+              
+                <a href="#" data-language-name="shell">Shell</a>
+              
+            
+              
+                <a href="#" data-language-name="http">HTTP</a>
+              
+            
+              
+                <a href="#" data-language-name="javascript">JS</a>
+              
+            
+              
+                <a href="#" data-language-name="python">Python</a>
+              
+            
+              
+                <a href="#" data-language-name="ruby">Ruby</a>
+              
+            
+              
+                <a href="#" data-language-name="php">PHP</a>
+              
+            
+              
+                <a href="#" data-language-name="java">Java</a>
+              
+            
+              
+                <a href="#" data-language-name="go">Go</a>
+              
+            
+              
+                <a href="#" data-language-name="csharp">C#</a>
+              
+            
+          </div>
+        
+      </div>
+    </div>
+  </body>
+</html>

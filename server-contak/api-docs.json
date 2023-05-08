@@ -1,0 +1,334 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "app.otpalerts.com",
+  "basePath": "/contak",
+  "tags": [
+    {
+      "name": "client-doc-controller",
+      "description": "Client Doc Controller"
+    }
+  ],
+  "paths": {
+    "/entoc/send": {
+      "post": {
+        "tags": [
+          "client-doc-controller"
+        ],
+        "summary": "Send Message",
+        "description": "Use this API to send E2E encrypted and structured messages to your customers.",
+        "operationId": "sendCustomerNoteUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "msg",
+            "description": "msg",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerNote"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API Key",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse«CustomerNote,object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "X_API_KEY": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "X_API_KEY": {
+      "type": "apiKey",
+      "name": "x-api-key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "ApiFieldError": {
+      "type": "object",
+      "required": [
+        "body",
+        "code",
+        "codeKey",
+        "codes",
+        "description",
+        "descriptionKey",
+        "field",
+        "obzect",
+        "possibleValues"
+      ],
+      "properties": {
+        "body": {
+          "type": "object"
+        },
+        "code": {
+          "type": "string"
+        },
+        "codeKey": {
+          "type": "string"
+        },
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "descriptionKey": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "obzect": {
+          "type": "string"
+        },
+        "possibleValues": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "title": "ApiFieldError"
+    },
+    "ApiResponse«CustomerNote,object»": {
+      "type": "object",
+      "required": [
+        "data",
+        "details",
+        "error",
+        "errors",
+        "exception",
+        "extra",
+        "logs",
+        "message",
+        "messageKey",
+        "meta",
+        "params",
+        "path",
+        "query",
+        "redirectUrl",
+        "results",
+        "status",
+        "statusKey",
+        "timestamp",
+        "traceid",
+        "warningKey",
+        "warnings"
+      ],
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/CustomerNote"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "error": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiFieldError"
+          }
+        },
+        "exception": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "object"
+        },
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "message": {
+          "type": "string",
+          "example": "This is success message in plain english"
+        },
+        "messageKey": {
+          "type": "string",
+          "example": "MESSAGE_SUCCESS:MOBILE:12"
+        },
+        "meta": {
+          "type": "object"
+        },
+        "params": {
+          "type": "object"
+        },
+        "path": {
+          "type": "string",
+          "example": "/postman/email/send"
+        },
+        "query": {
+          "type": "object"
+        },
+        "redirectUrl": {
+          "type": "string",
+          "example": "/go/to/some/other/url.html"
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerNote"
+          }
+        },
+        "status": {
+          "type": "string",
+          "example": 200
+        },
+        "statusKey": {
+          "type": "string",
+          "example": "SUCCESS"
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "example": 1541276788518
+        },
+        "traceid": {
+          "type": "string"
+        },
+        "warningKey": {
+          "type": "string"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiFieldError"
+          }
+        }
+      },
+      "title": "ApiResponse«CustomerNote,object»"
+    },
+    "ContakModel": {
+      "type": "object",
+      "required": [
+        "data",
+        "prefix",
+        "subtitle",
+        "suffix",
+        "title",
+        "value"
+      ],
+      "properties": {
+        "data": {
+          "type": "object"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "suffix": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "title": "ContakModel"
+    },
+    "CustomerNote": {
+      "type": "object",
+      "required": [
+        "phone",
+        "template",
+        "validity"
+      ],
+      "properties": {
+        "phone": {
+          "type": "string",
+          "example": "91XXXXXXXXXX",
+          "description": "Phone number of customer with ISD Code"
+        },
+        "template": {
+          "description": "Details of Template",
+          "$ref": "#/definitions/CustomerNoteTemplate"
+        },
+        "validity": {
+          "type": "integer",
+          "format": "int64",
+          "example": 60,
+          "description": "Message validtity in Seconds"
+        }
+      },
+      "title": "CustomerNote"
+    },
+    "CustomerNoteTemplate": {
+      "type": "object",
+      "required": [
+        "code",
+        "model"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "TRANSATION_ALERT",
+          "description": "Code of template"
+        },
+        "model": {
+          "description": "Dynamic values to be used to fill in template to draft final message. These values will be E2E encrypted",
+          "$ref": "#/definitions/ContakModel"
+        }
+      },
+      "title": "CustomerNoteTemplate"
+    }
+  }
+}
