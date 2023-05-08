@@ -1,8 +1,8 @@
 #theme: jekyll-theme-slate
 #theme: just-the-docs
 remote_theme: pmarsceill/just-the-docs
-title: OTPAlerts Documentation
-description: Business.Communication
+title: trueLinQ
+description: Jusr.Verified
 logo: "https://cdn.jsdelivr.net/gh/notiphyapp/docs@latest/content/static/app/notiphy/bg-x-logo.png"
 aux_links:
   "Create Account":
