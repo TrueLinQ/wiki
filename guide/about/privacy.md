@@ -83,7 +83,7 @@ Your consent to this Privacy Policy followed by your submission of such informat
 We may disclose your Data in the good faith belief that such action is necessary to:
 
 * To comply with a legal obligation
-* To protect and defend the rights or property of Mehery SocCom Pvt Ltd
+* To protect and defend the rights or property of duckberg Solutions Pvt Ltd
 * To prevent or investigate possible wrongdoing in connection with the Service
 * To protect the personal safety of users of the Service or the public
 * To protect against legal liability
