@@ -69,6 +69,55 @@ Attached to the `redirect_uri`  are two important URL arguments that you need to
 The `code` is a value that you exchange with trueLinQ for an OAuth 2.0 access token in the next step of the authentication process. For security reasons, the authorization code has a 30-minute lifespan and must be used immediately. If it expires, you must repeat all of the previous steps to request another authorization code.
 
 {: .highlight-title }
-> Warning
->
-> Before you use the authorization code, your application should ensure that the value returned in the state parameter matches the state value from your original authorization code request. This ensures that you are dealing with the real member and not a malicious script. If the state values do not match, you are likely the victim of a CSRF attack and your application should return a 401 Unauthorized error code in response.
+>[Warning](){: .label .label-yellow } Before you use the authorization code, your application should ensure that the value returned in the state parameter matches the state value from your original authorization code request. This ensures that you are dealing with the real member and not a malicious script. If the state values do not match, you are likely the victim of a CSRF attack and your application should return a 401 Unauthorized error code in response.
+
+
+
+## Exchange Authorization Code for an Access Token
+
+The next step is to get an access token for your application using the authorization code from the previous step.
+
+```
+ POST https://app.truelinq.com/linq/oauth2/v1/token
+```
+To do this, make the following HTTP POST request with a Content-Type header of x-www-form-urlencoded using the following parameters:
+
+|   Parameter	    | Type      | Description                                       | Required  |
+|   -               |   -       |   -                                               |   -       |
+| grant_type	    | string    |   The value of this field should always be: authorization_code             |   Yes     |
+| code	            | string    |	The authorization code you received in Step 2. |   Yes     |
+| client_id	        | string    |	The Client ID value generated in Step 1. |   Yes     |
+| client_secret	    | string    |	The Secret Key value generated in Step 1. |   Yes     |
+| redirect_uri	    | string    |	The same redirect_uri value that you passed in the previous step. |   Yes     |
+
+
+### Sample Request
+```
+POST  https://app.truelinq.com/linq/oauth2/v1/token
+ 
+Content-Type: application/x-www-form-urlencoded
+grant_type=authorization_code
+code={authorization_code_from_step2_response}
+client_id={your_client_id}
+client_secret={your_client_secret}
+redirect_uri={your_callback_url}
+```
+### Response
+A successful access token request returns a JSON object containing the following fields:
+
+
+|   Parameter	    | Type      | Description                                       | Required  |
+|   -               |   -       |   -                                               |   -       |
+| access_token	    | string    |   The access token for the application. This value must be kept secure              |   Yes     |
+| user	            | string    |	user profile details like name, phone, email. |   Yes     |
+
+```json
+{  
+    "access_token":"AQUvlL_DYEzvT2wz1QJiEPeLioeA",
+    "user": {
+        "name" : "John Doe",
+        "email" : "john.doe@boe.com",
+        "phone" : "+1xxxxxxxxxxx"
+    },
+}
+```
