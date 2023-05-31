@@ -61,6 +61,7 @@ By providing valid truelinq credentials and clicking Allow, the member approves 
 ```
 
 Attached to the `redirect_uri`  are two important URL arguments that you need to read from the request:
+
 |   Parameter	    | Type      | Description                                       | Required  |
 |   -               |   -       |   -                                               |   -       |
 | code	            | string    |	 The OAuth 2.0 authorization code.              |   Yes     |
