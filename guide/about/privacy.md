@@ -8,6 +8,8 @@ nav_order: 2
 Privacy Policy
 ==============
 
+![Privacy Policy](/docs/assets/images/privacy.jpeg "Privacy Policy")
+
 * Effective date: May 8, 2023
 
 duckeberg Solutions (“us”, “we”, or “our”) operates the website and the trueLinQ applicationthat allows you to create community, add profile(s) of the tribe and verify the profiles. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.

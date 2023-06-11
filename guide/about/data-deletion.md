@@ -8,6 +8,7 @@ nav_order: 2
 Data Deletion
 ==============
  
+ ![Data Deletion](/docs/assets/images/data-deletion.jpeg "Data Deletion")
 
  To delete your complete data login to profile and click *Delete Profile*. This will delete
  - Delete You Profile Information Given by you.
