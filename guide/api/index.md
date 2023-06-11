@@ -5,6 +5,9 @@ nav_order: 5
 has_children: true
 ---
 # Sign In with trueLinQ
+
+![Art](/docs/assets/images/sso.jpeg "a title")
+
 **trueLinQ** provides login service using OAuth2.0 protocol. Leverage this power to enhance the sign-in experience of your sites and applications.
 
 Use Sign In with trueLinQ to:
