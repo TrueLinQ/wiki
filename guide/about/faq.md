@@ -8,6 +8,8 @@ nav_order: 2
 FAQ
 ==============
 
+ ![FAQ](/docs/assets/images/faq.jpeg "FAQ")
+
 ### How do I register on the trueLinQ App
 Registration is a simple process. Enter your phone number. We will send an OTP to that number. Once you enter the correct OTP, your registration process is completed.
 

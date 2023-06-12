@@ -5,7 +5,7 @@ title: trueLinQ
 description: Simple.Secure.Sign.On
 #baseurl: /docs
 logo: "https://cdn.truelinq.com/_common/static/truelinq/linq-logo-150x50.png"
-color_scheme: dark
+#color_scheme: dark
 aux_links:
   "Login":
     - "//app.truelinq.com/linq/"
