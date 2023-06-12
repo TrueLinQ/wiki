@@ -6,6 +6,8 @@ has_children: true
 ---
 # About duckberg
 
+![duckberg](/docs/assets/images/duckberg.png "duckberg")
+
 
 duckberg is a young, one year old company, building solutions in the digital space.  
 
