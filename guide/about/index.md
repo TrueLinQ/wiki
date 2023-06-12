@@ -6,8 +6,6 @@ has_children: true
 ---
 # About duckberg
 
-![duckberg](/docs/assets/images/duckberg.png "duckberg")
-
 
 duckberg is a young, one year old company, building solutions in the digital space.  
 
@@ -18,3 +16,5 @@ duckberg has been born of an idea to democratize customer engagements – inform
 Our customers, are our partners, in mutual successes.
 
 Our journey, together, has just begun.
+
+![duckberg](/docs/assets/images/duckberg.png "duckberg")
