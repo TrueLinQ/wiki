@@ -36,6 +36,14 @@ While using our Service, we may ask you to provide us with certain personally id
 * Address, State, Province, ZIP/Postal code, City
 * Cookies and Usage Data
 
+### Contacts
+
+If the user uses TrueLinQ application, we will have access to your full contact list, we will use this solely in real time, and this data is not stored or used by us.
+
+### Call Logs
+
+If the user uses TrueLinQ application, we will have access to your call logs, we will use this solely in real time to identify the call, and this data is not stored or used by us.
+
 ### Usage Data
 
 We may also collect information that your browser sends whenever you visit our Service or when you access the Service by or through a computing device (“Usage Data”).
@@ -61,6 +69,10 @@ Examples of Cookies we use:
 Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.
 
 duckberg will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.
+
+## Geolocation Permission
+
+We may request access or permission to track location-based information from your mobile device, either continuously or while you are using TrueLinQ application, to provide certain location-based services. If you wish to change our access or permissions, you may do so in your device's settigs.
 
 ## Use of Data
 
