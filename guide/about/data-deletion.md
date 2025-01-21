@@ -10,8 +10,8 @@ Data Deletion
  
  ![Data Deletion](/docs/assets/images/data-deletion.jpeg "Data Deletion")
 
- To delete your complete 
- - data login to profile 
+ To delete your complete data 
+ - login to profile 
  - Go to *Settigns*
  - Click *Delete Profile*. 
 
